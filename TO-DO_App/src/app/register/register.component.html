@@ -1,0 +1,46 @@
+<!-- Template Driven Form for Login and to Register new users -->
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+
+          <!-- header -->
+          <h2>Register New User!</h2>
+          <br>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Email address</label><br>
+            <input type="email" name="email" ngModel id="form3Example3"  #email="ngModel" class="form-control form-control-lg" pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.com$"
+              placeholder="Enter a valid email address" required email/>
+             <span *ngIf="email.invalid && email.touched">Email is invalid!</span>
+
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">Password</label><br>
+            <input type="password" name="password" ngModel id="form3Example4"  #password="ngModel" class="form-control form-control-lg" minlength="5" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+              placeholder="Enter password" />
+              <span *ngIf="password.invalid && password.touched">Password should have atleast 5 characters :one uppercase, one lowercase and a digit</span>
+
+          </div>
+          <!-- Submit button -->
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="f.invalid"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
+              <span *ngIf="email.valid && password.valid"></span>
+
+          </div>
+          <!-- Add image to Page -->
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="img-fluid" alt="Sample image">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

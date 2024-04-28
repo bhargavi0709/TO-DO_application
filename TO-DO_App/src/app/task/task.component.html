@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="app-title">Task Details</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-offset-1 col-md-5">
+
+    <div class="panel panel-primary">
+      <br>
+      <div class="panel-body">
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="taskForm">
+
+          <div class="form-group">
+
+            <label for="name">Task Name:</label>
+            <input type="text" class="form-control" ngModel id="name" formControlName="name">
+          </div>
+
+          <br>
+          <button type="submit" class="btn btn-success">Submit</button>
+
+          &nbsp;&nbsp;
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- display data -->
+  <div class="col-md-5">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>Task Information</h3>
+      </div>
+      <div class="panel-body">
+        <br>
+
+        <table style="width:100%">
+          <tr>
+
+            <th>TaskName</th>
+
+            <th>Action</th>
+
+          </tr>
+          <tr *ngFor="let item of arrdata;let i=index">
+
+            <input type="text" *ngIf="activeEditIndex[i]" [(ngModel)]="newtaskname" name="newtaskname" id="newtaskname">
+            <td *ngIf="!activeEditIndex[i]">{{item["taskname"]}}</td>
+            <td>{{item["is_active"]}}</td>
+
+
+
+            <td>
+
+              <button class="btn btn-sm btn-warning" (click)="edit(i)">
+                <span>Edit</span>
+              </button>
+              &nbsp;
+              <button *ngIf="activeEditIndex[i]" class="btn btn-sm btn-success" (click)="saveEditedPost(i)">
+                <span>Save</span>
+              </button>
+              &nbsp;
+              <button class="btn btn-sm btn-danger" (click)="delete(i)">
+                <span>Delete</span>
+              </button>
+              &nbsp;
+              <button class="btn btn-sm btn-primary" (click)="success(i)">
+                <span>Success</span>
+              </button>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+</div>

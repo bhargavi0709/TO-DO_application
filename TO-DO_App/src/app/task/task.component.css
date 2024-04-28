@@ -1,0 +1,9 @@
+*{
+  margin: auto;
+  padding: auto;
+  box-sizing: border-box;
+}
+
+.app-title{
+  margin-left: 45px;
+}

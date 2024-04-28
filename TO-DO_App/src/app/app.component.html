@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<div class="topnav">
+  <ul>
+  <!-- <li *ngIf="!isLogin()"><a routerLink="" routerLinkActive="active" style="margin-left: 10px;">Home</a></li> -->
+  <li *ngIf="!isLogin()"><a routerLink="login" routerLinkActive="active">Login</a></li>
+  <li *ngIf="isLogin()" style="margin-right: 25px;"><a routerLink="task" routerLinkActive="active">To-Do</a></li>
+  <li *ngIf="isLogin()"><a routerLink="" routerLinkActive="active" (click)="logOut()">Logout</a></li>
+</ul>
+</div>
+
+<router-outlet></router-outlet>
+<!-- to insert the components matched by routes -->
